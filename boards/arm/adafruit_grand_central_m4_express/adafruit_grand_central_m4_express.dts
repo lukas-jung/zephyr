@@ -48,6 +48,45 @@
 	pinctrl-names = "default";
 };
 
+&sercom3 {
+	status = "okay";
+	compatible = "atmel,sam0-i2c";
+	clock-frequency = <I2C_BITRATE_FAST>;
+
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	pinctrl-0 = <&sercom3_i2c_default>;
+	pinctrl-names = "default";
+};
+
+&sercom4 {
+	status = "okay";
+	compatible = "atmel,sam0-spi";
+	dipo = <3>;
+	dopo = <1>;
+
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	pinctrl-0 = <&sercom4_spi_default>;
+	pinctrl-names = "default";
+
+	cs-gpios = <&portb 28 GPIO_ACTIVE_LOW>;
+
+	/* microSD Card */
+	sdhc0: sdhc@0 {
+		status = "okay";
+		compatible = "zephyr,sdhc-spi-slot";
+		reg = <0>;
+		spi-max-frequency = <24000000>;
+		mmc {
+			status = "okay";
+			compatible = "zephyr,sdmmc-disk";
+		};
+	};
+};
+
 &sercom6 {
 	status = "okay";
 	compatible = "atmel,sam0-spi";
