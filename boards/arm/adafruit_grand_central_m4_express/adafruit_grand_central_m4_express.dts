@@ -22,6 +22,7 @@
 	/* These aliases are provided for compatibility with samples */
 	aliases {
 		led0 = &led0;
+		sdhc0 = &sdhc0;
 	};
 
 	leds {
@@ -60,16 +61,16 @@
 	pinctrl-names = "default";
 };
 
-&sercom4 {
+&sercom2 {
 	status = "okay";
 	compatible = "atmel,sam0-spi";
 	dipo = <3>;
-	dopo = <1>;
+	dopo = <0>;
 
 	#address-cells = <1>;
 	#size-cells = <0>;
 
-	pinctrl-0 = <&sercom4_spi_default>;
+	pinctrl-0 = <&sercom2_spi_default>;
 	pinctrl-names = "default";
 
 	cs-gpios = <&portb 28 GPIO_ACTIVE_LOW>;
@@ -87,16 +88,16 @@
 	};
 };
 
-&sercom6 {
+&sercom7 {
 	status = "okay";
 	compatible = "atmel,sam0-spi";
 	dipo = <3>;
-	dopo = <1>;
+	dopo = <0>;
 
 	#address-cells = <1>;
 	#size-cells = <0>;
 
-	pinctrl-0 = <&sercom6_spi_default>;
+	pinctrl-0 = <&sercom7_spi_default>;
 	pinctrl-names = "default";
 };
 
